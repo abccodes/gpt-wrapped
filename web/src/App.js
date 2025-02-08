@@ -31,30 +31,76 @@ function App() {
       })
       .then((text) => {
         const jsonData = JSON.parse(text)
-        // Debug: Log the raw JSON structure so we know what we're working with.
         console.log('Raw JSON Data:', jsonData)
 
-        // Process the raw JSON into an array of conversation objects.
+        // Process the raw JSON into an array of conversation objects
         const processedConversations = processConversations(jsonData)
         console.log(`Processed ${processedConversations.length} conversations.`)
+        console.log(
+          'First 5 Conversations:',
+          processedConversations.slice(0, 5),
+        )
 
-        // Print out the first five conversations (or all if fewer than five)
-        const firstFive = processedConversations.slice(0, 5)
-        console.log('First 5 Conversations:', firstFive)
+        // Count total messages (for reference)
+        const totalMessages = countMessages(processedConversations)
+        console.log('Total number of messages:', totalMessages)
+
+        // Count total queries (user messages) across all conversations
+        const totalQueries = countQueries(processedConversations)
+        console.log('Total number of queries (user messages):', totalQueries)
+
+        // --- Environmental Calculations by Model ---
+        // Group queries by model.
+        const queriesByModel = {} // key: model, value: total user queries
+        processedConversations.forEach((convo) => {
+          const model = convo.model
+          const numQueries = convo.messages.filter(
+            (msg) => msg.author === 'user',
+          ).length
+          queriesByModel[model] = (queriesByModel[model] || 0) + numQueries
+        })
+
+        // For each model, calculate and print total environmental impacts.
+        Object.keys(queriesByModel).forEach((model) => {
+          const numQueries = queriesByModel[model]
+          const factors = getModelFactors(model)
+          const totalEnergy = factors.energy * numQueries
+          const totalCO2 = factors.co2 * numQueries
+          // For water, assume that every series of up to 50 queries uses 500 ml.
+          const totalWater =
+            Math.ceil(numQueries / 50) * 500 * factors.waterMultiplier
+          console.log(`Model: ${model}`)
+          console.log(`  Total queries: ${numQueries}`)
+          console.log(`  Total water usage: ${totalWater.toFixed(2)} ml`)
+          console.log(`  Total CO₂ emissions: ${totalCO2.toFixed(2)} units`)
+          console.log(`  Total energy usage: ${totalEnergy.toFixed(2)} Wh`)
+        })
+
+        // --- Calculate Overall Totals ---
+        const overallTotals = calculateOverallTotals(queriesByModel)
+        console.log('--- Overall Environmental Totals ---')
+        console.log(`Overall queries: ${overallTotals.overallQueries}`)
+        console.log(
+          `Overall water usage: ${overallTotals.overallWater.toFixed(2)} ml`,
+        )
+        console.log(
+          `Overall CO₂ emissions: ${overallTotals.overallCO2.toFixed(2)} units`,
+        )
+        console.log(
+          `Overall energy usage: ${overallTotals.overallEnergy.toFixed(2)} Wh`,
+        )
       })
       .catch((err) => {
         console.error('Error processing the zip file:', err)
       })
   }, [])
 
-  return (
-    <div>Data loaded. Check the console for the first 5 conversations.</div>
-  )
+  return <div>Data loaded. Check the console for results.</div>
 }
 
 /**
  * Processes the raw JSON export.
- * This function attempts to handle several possible structures:
+ * Supports multiple structures:
  *   1. rawData.conversations is an array.
  *   2. rawData.conversations is an object (keys as conversation IDs).
  *   3. rawData itself is a single conversation (contains a mapping property).
@@ -62,7 +108,6 @@ function App() {
  */
 function processConversations(rawData) {
   console.log('Detecting conversation structure...')
-  // Case 1: rawData.conversations exists
   if (rawData.conversations) {
     if (Array.isArray(rawData.conversations)) {
       console.log('Conversations detected as an array.')
@@ -74,12 +119,10 @@ function processConversations(rawData) {
       )
     }
   }
-  // Case 2: rawData itself is a conversation (has a mapping property)
   if (rawData.mapping) {
     console.log('Raw data appears to be a single conversation.')
     return [processConversation(rawData)]
   }
-  // Case 3: rawData is a collection of conversations keyed by IDs
   if (typeof rawData === 'object') {
     const possibleConvos = Object.values(rawData).filter(
       (val) => val && typeof val === 'object' && val.mapping,
@@ -95,32 +138,50 @@ function processConversations(rawData) {
 
 /**
  * Processes a single conversation object.
- * Extracts conversation-level metadata (title, create_time, update_time)
- * and all messages from the mapping.
+ * Extracts conversation-level metadata (title, create_time, update_time),
+ * attempts to extract the model used, and processes all messages from the mapping.
  */
 function processConversation(convo) {
-  // Extract conversation-level metadata.
   const title = convo.title || 'Untitled Conversation'
   const create_time = convo.create_time || null
   const update_time = convo.update_time || null
+
+  // Determine the model:
+  // First try the top-level property, then check for a model in the messages' metadata.
+  let model = convo.model
+  if (!model && convo.mapping && typeof convo.mapping === 'object') {
+    for (const nodeId in convo.mapping) {
+      const node = convo.mapping[nodeId]
+      if (
+        node.message &&
+        node.message.metadata &&
+        node.message.metadata.model_slug
+      ) {
+        model = node.message.metadata.model_slug
+        break
+      }
+    }
+  }
+  if (!model) {
+    model = 'gpt-3.5'
+  }
 
   const messages = []
   if (convo.mapping && typeof convo.mapping === 'object') {
     Object.keys(convo.mapping).forEach((nodeId) => {
       const node = convo.mapping[nodeId]
-      // Only process nodes that have a non-null message.
       if (node.message) {
         const author = node.message.author?.role || 'unknown'
         const m_create_time = node.message.create_time || null
         const m_update_time = node.message.update_time || null
 
-        // Process the message content.
+        // Process message content: join parts and stringify non-string parts.
         let content = ''
         if (node.message.content && Array.isArray(node.message.content.parts)) {
           content = node.message.content.parts
-            .map((part) => {
-              return typeof part === 'string' ? part : JSON.stringify(part)
-            })
+            .map((part) =>
+              typeof part === 'string' ? part : JSON.stringify(part),
+            )
             .join(' ')
         }
         messages.push({
@@ -132,7 +193,6 @@ function processConversation(convo) {
         })
       }
     })
-
     // Sort messages by creation time (if available)
     messages.sort((a, b) => (a.create_time || 0) - (b.create_time || 0))
   }
@@ -141,8 +201,98 @@ function processConversation(convo) {
     title,
     create_time,
     update_time,
+    model,
     messages,
   }
+}
+
+/**
+ * Counts the total number of messages across all processed conversations.
+ * @param {Array} conversations - Array of processed conversation objects.
+ * @returns {number} Total message count.
+ */
+function countMessages(conversations) {
+  let total = 0
+  conversations.forEach((convo) => {
+    if (convo.messages && Array.isArray(convo.messages)) {
+      total += convo.messages.length
+    }
+  })
+  return total
+}
+
+/**
+ * Counts the total number of queries (i.e. user messages) across all processed conversations.
+ * @param {Array} conversations - Array of processed conversation objects.
+ * @returns {number} Total query count.
+ */
+function countQueries(conversations) {
+  let total = 0
+  conversations.forEach((convo) => {
+    if (convo.messages && Array.isArray(convo.messages)) {
+      convo.messages.forEach((msg) => {
+        if (msg.author === 'user') {
+          total++
+        }
+      })
+    }
+  })
+  return total
+}
+
+/**
+ * Returns model-specific factors.
+ * Each factor object includes:
+ *  - energy: Wh used per query
+ *  - co2: grams of CO₂ emitted per query
+ *  - waterMultiplier: multiplier for water usage per series (baseline is 500 ml per up to 50 queries)
+ *
+ * Example assumptions:
+ *  - GPT-3 mini: roughly half the baseline.
+ *  - GPT-3.5: baseline.
+ *  - GPT-4: roughly 2× the baseline.
+ *  - o1 (and similar): adjust as needed.
+ *
+ * @param {string} model - The model name.
+ * @returns {Object} An object with keys: energy, co2, waterMultiplier.
+ */
+function getModelFactors(model) {
+  const lower = model.toLowerCase()
+  if (lower.includes('gpt-3 mini')) {
+    return { energy: 0.15, co2: 2.16, waterMultiplier: 0.5 }
+  } else if (lower.includes('o1')) {
+    // Example factors for an "o1" model
+    return { energy: 0.4, co2: 5.76, waterMultiplier: 1.5 }
+  } else if (lower.includes('gpt-4')) {
+    return { energy: 0.6, co2: 8.64, waterMultiplier: 2 }
+  } else if (lower.includes('gpt-3')) {
+    // This covers GPT-3.5 and similar
+    return { energy: 0.3, co2: 4.32, waterMultiplier: 1 }
+  } else {
+    // Default fallback
+    return { energy: 0.3, co2: 4.32, waterMultiplier: 1 }
+  }
+}
+
+/**
+ * Calculates the overall environmental totals across all models.
+ * @param {Object} queriesByModel - An object with keys as model names and values as total user queries.
+ * @returns {Object} An object with overall queries, water (ml), CO₂ (grams), and energy (Wh).
+ */
+function calculateOverallTotals(queriesByModel) {
+  let overallQueries = 0
+  let overallWater = 0
+  let overallCO2 = 0
+  let overallEnergy = 0
+  Object.keys(queriesByModel).forEach((model) => {
+    const numQueries = queriesByModel[model]
+    const factors = getModelFactors(model)
+    overallQueries += numQueries
+    overallEnergy += factors.energy * numQueries
+    overallCO2 += factors.co2 * numQueries
+    overallWater += Math.ceil(numQueries / 50) * 500 * factors.waterMultiplier
+  })
+  return { overallQueries, overallWater, overallCO2, overallEnergy }
 }
 
 export default App
