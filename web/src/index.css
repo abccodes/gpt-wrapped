@@ -1,9 +1,12 @@
+@import "@fontsource/rubik";
+@import "@fontsource/rubik/600.css"; /* Load Rubik SemiBold */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-sans: "Rubik", sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -27,6 +30,7 @@ a:hover {
 }
 
 body {
+  font-family: var(--font-sans);
   margin: 0;
   display: flex;
   place-items: center;
@@ -71,12 +75,10 @@ button:focus-visible {
   }
 }
 
-
-
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --foreground: 0 2% 15%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
@@ -128,8 +130,6 @@ button:focus-visible {
     --chart-5: 340 75% 55%;
   }
 }
-
-
 
 @layer base {
   * {
