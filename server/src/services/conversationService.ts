@@ -13,7 +13,7 @@ export const processConversations = (rawData: any): Conversation[] => {
       create_time: conversation.create_time || Date.now(),
       update_time: conversation.update_time || Date.now(),
       model: extractModelFromMapping(processedMapping),
-      messages: extractMessagesFromMapping(processedMapping), // ✅ Fix: Extract messages
+      messages: extractMessagesFromMapping(processedMapping),
       mapping: processedMapping,
     };
   });
