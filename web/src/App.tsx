@@ -1,12 +1,12 @@
 import "./App.css";
+import { Button } from "@/components/ui/button";
 import ZipUpload from "./components/ZipUpload";
 
 function App() {
   return (
     <>
-      <div className="card">
-        <ZipUpload />
-      </div>
+      <ZipUpload />
+      <Button>Test</Button>
     </>
   );
 }
