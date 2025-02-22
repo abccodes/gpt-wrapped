@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "./components/ui/button";
 import ZipUpload from "./components/ZipUpload";
 import LandingPage from "./pages/LandingPage";
 import NavBar from "./components/NavBar";

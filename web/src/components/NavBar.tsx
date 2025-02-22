@@ -1,40 +1,22 @@
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "@/components/ui/navigation-menu";
+import React from "react";
+import { Button } from "@/components/ui/button";
 
-const NavBar = () => {
+const NavBar: React.FC = () => {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Home</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <NavigationMenuLink href="/">Home</NavigationMenuLink>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>About</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <NavigationMenuLink href="/about">About</NavigationMenuLink>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Contact</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <NavigationMenuLink href="/contact">Contact</NavigationMenuLink>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-      <NavigationMenuIndicator />
-      <NavigationMenuViewport />
-    </NavigationMenu>
+    <nav className="fixed top-8 left-1/2 transform -translate-x-1/2 flex gap-4">
+      <Button
+        variant="outline"
+        className="border-black rounded-[36.5px] px-6 py-2 text-lg font-medium hover:bg-gray-100"
+      >
+        Learn More
+      </Button>
+      <Button
+        variant="outline"
+        className="border-black rounded-[36.5px] px-6 py-2 text-lg font-medium hover:bg-gray-100"
+      >
+        About Us
+      </Button>
+    </nav>
   );
 };
 
