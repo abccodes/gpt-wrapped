@@ -4,8 +4,16 @@ module.exports = {
   content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
   theme: {
     extend: {
+      fontSize: {
+        title: ['120px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        subheading: ['50px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+      },
       fontFamily: {
-        sans: ['Rubik', 'sans-serif'], // Set Rubik as the primary font
+        sans: ['Rubik', 'sans-serif'],
+        regular: '400',
+      },
+      fontWeight: {
+        semibold: '600',
       },
       borderRadius: {
         lg: 'var(--radius)',
