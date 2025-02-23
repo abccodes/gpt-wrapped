@@ -6,7 +6,7 @@ interface DividerProps {
   className?: string; // Extra styles if needed
 }
 
-const Divider: React.FC<DividerProps> = ({ width = "w-3/4", className }) => {
+const Divider: React.FC<DividerProps> = ({ width = "w-5/6", className }) => {
   return (
     <div
       className={cn(

@@ -1,5 +1,6 @@
 @import "@fontsource/rubik";
-@import "@fontsource/rubik/600.css"; /* Load Rubik SemiBold */
+@import "@fontsource/rubik/600.css";
+@import "@fontsource/rubik/300.css";
 
 @tailwind base;
 @tailwind components;
