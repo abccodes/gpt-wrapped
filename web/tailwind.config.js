@@ -6,7 +6,22 @@ module.exports = {
     extend: {
       fontSize: {
         title: ['120px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
-        subheading: ['50px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        subtitle: ['90px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        tertiaryheading: [
+          '70px',
+          { lineHeight: '1.1', letterSpacing: '-0.04em' },
+        ],
+        heading: ['50px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        subheading: ['45px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        paragraphlarge: [
+          '40px',
+          { lineHeight: '1.1', letterSpacing: '-0.04em' },
+        ],
+        cardtitle: ['30px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        paragraphmedium: [
+          '30px',
+          { lineHeight: '1.1', letterSpacing: '-0.04em' },
+        ],
       },
       fontFamily: {
         sans: ['Rubik', 'sans-serif'],
@@ -14,6 +29,7 @@ module.exports = {
       },
       fontWeight: {
         semibold: '600',
+        thin: '300',
       },
       borderRadius: {
         lg: 'var(--radius)',
