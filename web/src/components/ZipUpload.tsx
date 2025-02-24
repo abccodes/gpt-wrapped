@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useLoading } from "../context/LoadingContext";
+import CTAButton from "./ui/CTAButton";
 
 const ZipUpload: React.FC = () => {
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const navigate = useNavigate();
+  const { startLoading, stopLoading } = useLoading();
 
   // Handle File Selection
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,6 +22,13 @@ const ZipUpload: React.FC = () => {
     }
   };
 
+  // Open File Picker
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
   // Handle File Upload
   const handleUpload = async () => {
     if (!file) {
@@ -24,12 +36,12 @@ const ZipUpload: React.FC = () => {
       return;
     }
 
-    const formData = new FormData();
-    formData.append("zipFile", file);
-
     setUploading(true);
+    startLoading();
     navigate("/loading");
 
+    const formData = new FormData();
+    formData.append("zipFile", file);
     const startTime = Date.now();
 
     try {
@@ -37,37 +49,47 @@ const ZipUpload: React.FC = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
 
+      // Ensure a minimum of 5 seconds before navigating
       const elapsedTime = Date.now() - startTime;
       const remainingTime = Math.max(5000 - elapsedTime, 0);
 
       setTimeout(() => {
+        stopLoading();
+        setUploading(false);
         navigate("/results");
       }, remainingTime);
     } catch (error) {
       alert("Upload failed. Please try again.");
-      navigate("/tutorial");
-    } finally {
+      stopLoading();
       setUploading(false);
+      navigate("/upload");
     }
   };
 
   return (
-    <div className="p-4 border rounded-lg shadow-md max-w-md mx-auto">
-      <h2 className="text-lg font-semibold mb-2">Upload a ZIP File</h2>
-      <input
-        type="file"
-        accept=".zip"
-        onChange={handleFileChange}
-        className="mb-2"
-      />
-      <button
-        onClick={handleUpload}
-        className="px-4 py-2 bg-blue-500 text-white rounded"
-        disabled={uploading}
-      >
-        {uploading ? "Uploading..." : "Upload"}
-      </button>
-    </div>
+    <>
+      <div className="w-full h-full border rounded-lg shadow-md bg-[#EBEBEB] flex flex-col justify-center items-center p-6">
+        {!file ? (
+          <CTAButton onClick={handleButtonClick}>
+            <span className="block text-center">Choose a ZIP File</span>
+          </CTAButton>
+        ) : (
+          <span className="text-black text-lg">{file.name}</span>
+        )}
+        <input
+          type="file"
+          accept=".zip"
+          ref={fileInputRef}
+          onChange={handleFileChange}
+          className="hidden"
+        />
+        {file && (
+          <CTAButton onClick={handleUpload} className="mt-4">
+            Upload
+          </CTAButton>
+        )}
+      </div>
+    </>
   );
 };
 
