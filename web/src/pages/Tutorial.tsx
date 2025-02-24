@@ -8,6 +8,7 @@ import gpthome from "../assets/gpthome.png";
 import datacontrols from "../assets/datacontrols.png";
 import gptemail from "../assets/gptemail.png";
 import ZipUpload from "../components/ZipUpload";
+import Loading from "./Loading";
 
 const Tutorial: React.FC = () => {
   return (
@@ -36,7 +37,6 @@ const Tutorial: React.FC = () => {
           </Heading>
         </div>
 
-        {/* Right section with image */}
         <div className="w-1/2 m-20">
           <img
             src={gpthome}
@@ -54,7 +54,6 @@ const Tutorial: React.FC = () => {
           <Heading>Go to: Settings &gt; Data Controls &gt; Export Data</Heading>
         </div>
 
-        {/* Right section with image */}
         <div className="w-1/2 m-20">
           <img
             src={datacontrols}
@@ -74,7 +73,6 @@ const Tutorial: React.FC = () => {
           </Heading>
         </div>
 
-        {/* Right section with image */}
         <div className="w-1/2 m-20">
           <img
             src={gptemail}
@@ -89,10 +87,9 @@ const Tutorial: React.FC = () => {
           <div className="w-32 h-32 bg-gray-800 text-white rounded-full flex items-center justify-center shadow-lg mb-10">
             <TertiaryHeading>4</TertiaryHeading>
           </div>
-          <Heading>Drop Here!</Heading>
+          <Heading>Upload your zip file !</Heading>
         </div>
 
-        {/* Right section with image */}
         <div className="w-1/2 m-20">
           <ZipUpload />
         </div>

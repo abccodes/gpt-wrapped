@@ -22,6 +22,10 @@ module.exports = {
           '30px',
           { lineHeight: '1.1', letterSpacing: '-0.04em' },
         ],
+        paragraphsmall: [
+          '20px',
+          { lineHeight: '1.1', letterSpacing: '-0.04em' },
+        ],
       },
       fontFamily: {
         sans: ['Rubik', 'sans-serif'],
