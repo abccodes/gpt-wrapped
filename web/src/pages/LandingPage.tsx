@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import NavBar from "../components/NavBar";
 import Title from "../components/typography/Title";
 import Heading from "../components/typography/Heading";
@@ -12,12 +12,26 @@ import TeritaryHeading from "../components/typography/TertiaryHeading";
 import ParagraphLarge from "../components/typography/ParagraphLarge";
 import { ArrowUpRight } from "lucide-react";
 import FeatureIcon from "../components/FeatureIcon";
+import { Link } from "react-router-dom";
+import HomeButton from "../components/ui/HomeButton";
 
 const LandingPage: React.FC = () => {
+  const learnMoreRef = useRef<HTMLDivElement>(null!);
+  const aboutUsRef = useRef<HTMLDivElement>(null!);
+  const homePageRef = useRef<HTMLDivElement>(null!);
+
+  const handleScroll = (ref: React.RefObject<HTMLDivElement>) => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <>
       <div className="flex w-screen justify-center p-5 mb-20">
-        <NavBar />
+        <HomeButton />
+        <NavBar
+          scrollToLearnMore={() => handleScroll(learnMoreRef)}
+          scrollToAboutUs={() => handleScroll(aboutUsRef)}
+        />
       </div>
       <div className="flex flex-col w-screen justify-center items-center text-center ">
         <div className="w-2/3 m-10 mt-20">
@@ -27,13 +41,18 @@ const LandingPage: React.FC = () => {
           <Heading>SEE YOUR IMPACT WITH ARTIFICIAL INTELLIGENCE</Heading>
         </div>
         <div className="mt-20">
-          <CTAButton>
-            GET TO WRAPPING <ArrowUpRight className="w-5 h-5" />
-          </CTAButton>
+          <Link to="/tutorial">
+            <CTAButton>
+              GET TO WRAPPING <ArrowUpRight className="w-5 h-5" />
+            </CTAButton>
+          </Link>
         </div>
         <Divider />
       </div>
-      <div className="flex flex-col justify-center items-center text-center">
+      <div
+        ref={learnMoreRef}
+        className="flex flex-col justify-center items-center text-center"
+      >
         <SubTitle className="w-2/3 mb-10">
           MEASURE YOUR USE OF CHAT GPT IN ELEMENTS
         </SubTitle>
@@ -76,7 +95,10 @@ const LandingPage: React.FC = () => {
             </ParagraphLarge>
             <Divider />
           </div>{" "}
-          <div className="flex w-full flex-col justify-center items-center text-center">
+          <div
+            ref={aboutUsRef}
+            className="flex w-full flex-col justify-center items-center text-center mb-20"
+          >
             <CTAButton>ABSOLUTELY NO NEED TO FRET</CTAButton>
             <SubTitle className="m-10"> YOUR DATA'S SAFE WITH US</SubTitle>
             <div className="flex justify-center gap-10">

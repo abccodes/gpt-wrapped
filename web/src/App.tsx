@@ -1,15 +1,17 @@
-import { Button } from "./components/ui/button";
-import ZipUpload from "./components/ZipUpload";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
-import NavBar from "./components/NavBar";
+import Tutorial from "./pages/Tutorial";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <LandingPage />
-      <ZipUpload />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/tutorial" element={<Tutorial />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
