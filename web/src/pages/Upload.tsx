@@ -82,19 +82,18 @@ const Tutorial: React.FC = () => {
         </div>
       </div>
       <Divider />
-      <div className="flex flex-row w-full justify-center items-center text-center px-20 mt-20">
-        <div className="m-20 flex flex-col items-start text-left w-1/2">
+      <div className="flex flex-row w-full justify-center items-stretch text-center px-20 mt-20 mb-20">
+        <div className="m-10 flex flex-col justify-center items-start text-left w-1/2 h-80 ">
           <div className="w-32 h-32 bg-gray-800 text-white rounded-full flex items-center justify-center shadow-lg mb-10">
             <TertiaryHeading>4</TertiaryHeading>
           </div>
-          <Heading>Upload your zip file !</Heading>
+          <Heading>Upload your zip file!</Heading>
         </div>
 
-        <div className="w-1/2 m-20">
+        <div className="m-10 flex flex-col items-start text-left w-1/2 h-80">
           <ZipUpload />
         </div>
       </div>
-      <Divider />
     </div>
   );
 };

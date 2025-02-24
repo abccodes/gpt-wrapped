@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Progress } from "@/components/ui/progress";
+import { useLoading } from "@/context/LoadingContext";
+import { useNavigate } from "react-router-dom";
 
 const Loading: React.FC = () => {
   const [progress, setProgress] = useState(10);
+  const { isLoading } = useLoading();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isLoading) {
+      navigate("/upload");
+    }
+  }, [isLoading, navigate]);
+
+  if (!isLoading) return null;
 
   useEffect(() => {
     const interval = setInterval(() => {
