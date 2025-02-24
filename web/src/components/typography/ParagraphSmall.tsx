@@ -6,12 +6,12 @@ interface TitleProps {
   className?: string;
 }
 
-const ParagraphMedium: React.FC<TitleProps> = ({ children, className }) => {
+const ParagraphSmall: React.FC<TitleProps> = ({ children, className }) => {
   return (
-    <h1 className={cn("text-paragraphmedium font-thin", className)}>
+    <h1 className={cn("text-paragraphsmall font-thin", className)}>
       {children}
     </h1>
   );
 };
 
-export default ParagraphMedium;
+export default ParagraphSmall;

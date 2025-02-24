@@ -77,14 +77,25 @@ const LandingPage: React.FC = () => {
           <div className="flex gap-6 mt-20">
             <ImageCard
               imgSrc="/images/electricity.jpg"
-              title="GPT IN ELECTRICITY"
+              title="HOW CHAT USES ELECTRICITY"
+              content="ChatGPT relies on high-energy servers, demanding electricity for processing and storage."
+              style={{ transform: "rotateZ(-5deg)" }}
             />
-            <ImageCard imgSrc="/images/co2.jpg" title="GPT IN CO2 EMISSIONS" />
-            <ImageCard imgSrc="/images/water.jpg" title="GPT IN FRESH WATER" />
+            <ImageCard
+              imgSrc="/images/co2.jpg"
+              title="HOW CHAT USES CO2 EMISSIONS"
+              content="Cooling AI Data centers powering ChatGPT generate carbon emissions from electricity and cooling systems."
+            />
+            <ImageCard
+              imgSrc="/images/water.jpg"
+              title="HOW CHAT CONSUMES FRESHWATER"
+              content="Cooling AI servers consumes fresh water to prevent overheating and maintain efficiency."
+              style={{ transform: "rotateZ(5deg)" }}
+            />
           </div>
           <Divider />
           <div className="flex w-full flex-col justify-center items-center text-center">
-            <SubTitle className="w-2/3 m-10">HOW WE MAKE IT HAPPEN</SubTitle>
+            <SubTitle className="w-2/3 mn-10">HOW WE MAKE IT HAPPEN</SubTitle>
             <TeritaryHeading className="m-5">IT'S 3 EASY STEPS</TeritaryHeading>
             <ParagraphLarge className="w-4/6 mt-10">
               Unwrap the environmental impact of your AI usage with ChatGPT
