@@ -40,7 +40,7 @@ const LandingPage: React.FC = () => {
           <Heading>SEE YOUR IMPACT WITH ARTIFICIAL INTELLIGENCE</Heading>
         </div>
         <div className="mt-20">
-          <Link to="/tutorial">
+          <Link to="/upload">
             <CTAButton>
               GET TO WRAPPING <ArrowUpRight className="w-5 h-5" />
             </CTAButton>
