@@ -1,9 +1,8 @@
 import React from "react";
-import { cn } from "@/lib/utils"; // Ensure cn utility is available in your project
-
+import { cn } from "@/lib/utils";
 interface DividerProps {
-  width?: string; // Custom width (e.g., "w-2/3" or "w-full")
-  className?: string; // Extra styles if needed
+  width?: string;
+  className?: string;
 }
 
 const Divider: React.FC<DividerProps> = ({ width = "w-5/6", className }) => {

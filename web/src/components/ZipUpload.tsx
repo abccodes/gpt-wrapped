@@ -12,7 +12,6 @@ const ZipUpload: React.FC = () => {
   const navigate = useNavigate();
   const { startLoading, stopLoading } = useLoading();
 
-  // Handle File Selection
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = event.target.files?.[0];
     if (selectedFile && selectedFile.type === "application/zip") {
@@ -22,14 +21,12 @@ const ZipUpload: React.FC = () => {
     }
   };
 
-  // Open File Picker
   const handleButtonClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
     }
   };
 
-  // Handle File Upload
   const handleUpload = async () => {
     if (!file) {
       alert("No file selected.");

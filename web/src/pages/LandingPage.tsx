@@ -18,7 +18,6 @@ import HomeButton from "../components/ui/HomeButton";
 const LandingPage: React.FC = () => {
   const learnMoreRef = useRef<HTMLDivElement>(null!);
   const aboutUsRef = useRef<HTMLDivElement>(null!);
-  const homePageRef = useRef<HTMLDivElement>(null!);
 
   const handleScroll = (ref: React.RefObject<HTMLDivElement>) => {
     ref.current?.scrollIntoView({ behavior: "smooth" });

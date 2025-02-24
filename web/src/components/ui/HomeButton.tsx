@@ -9,7 +9,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 const HomeButton: React.FC = () => {
@@ -26,7 +25,7 @@ const HomeButton: React.FC = () => {
     if (location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (location.pathname === "/results") {
-      setOpen(true); // Show confirmation dialog only on the /results page
+      setOpen(true);
     } else {
       navigate("/");
     }

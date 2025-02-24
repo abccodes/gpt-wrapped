@@ -8,7 +8,6 @@ import gpthome from "../assets/gpthome.png";
 import datacontrols from "../assets/datacontrols.png";
 import gptemail from "../assets/gptemail.png";
 import ZipUpload from "../components/ZipUpload";
-import Loading from "./Loading";
 
 const Tutorial: React.FC = () => {
   return (
