@@ -14,7 +14,7 @@ const FeatureIcon: React.FC<FeatureIconProps> = ({
 }) => {
   return (
     <div className={`flex flex-col items-center text-center ${className}`}>
-      <div className="w-[150px] h-[150px] bg-[#D9D9D9] rounded-full flex items-center justify-center overflow-hidden m-10">
+      <div className="w-[250px] h-[250px] bg-[#D9D9D9] rounded-full flex items-center justify-center overflow-hidden">
         {imgSrc ? (
           <img
             src={imgSrc}
@@ -24,7 +24,7 @@ const FeatureIcon: React.FC<FeatureIconProps> = ({
         ) : null}
       </div>
 
-      <ParagraphMedium className="w-2/3">{title}</ParagraphMedium>
+      <ParagraphMedium className="w-2/3 mt-5">{title}</ParagraphMedium>
     </div>
   );
 };
