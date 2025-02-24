@@ -93,28 +93,34 @@ const LandingPage: React.FC = () => {
             />
           </div>
           <Divider />
-          <div className="flex w-full flex-col justify-center items-center text-center">
-            <SubTitle className="w-2/3 mn-10">HOW WE MAKE IT HAPPEN</SubTitle>
-            <TeritaryHeading className="m-5">IT'S 3 EASY STEPS</TeritaryHeading>
-            <ParagraphLarge className="w-4/6 mt-10">
-              Unwrap the environmental impact of your AI usage with ChatGPT
-              Impact Tracker. Analyze your conversations and discover the top 3
-              responses with the highest carbon, water, electricity, and gas
-              costs. This tool empowers users to make informed, eco-conscious
-              decisions about their AI interactions.{" "}
-            </ParagraphLarge>
-            <Divider />
-          </div>{" "}
-          <div
-            ref={aboutUsRef}
-            className="flex w-full flex-col justify-center items-center text-center mb-20"
-          >
-            <CTAButton>ABSOLUTELY NO NEED TO FRET</CTAButton>
-            <SubTitle className="m-10"> YOUR DATA'S SAFE WITH US</SubTitle>
-            <div className="flex justify-center gap-10">
-              <FeatureIcon title="ENCRYPTION GUARANTEE" />
-              <FeatureIcon title="LOCAL PROCESSING" />
-              <FeatureIcon title="DELETES IN REAL TIME" />
+        </div>
+        <div className="flex w-full flex-col justify-center items-center text-center">
+          <SubTitle className="w-2/3 mn-10">HOW WE MAKE IT HAPPEN</SubTitle>
+          <TeritaryHeading className="m-5">IT'S 3 EASY STEPS</TeritaryHeading>
+          <ParagraphLarge className="w-4/6 mt-10">
+            Unwrap the environmental impact of your AI usage with ChatGPT Impact
+            Tracker. Analyze your conversations and discover the top 3 responses
+            with the highest carbon, water, electricity, and gas costs. This
+            tool empowers users to make informed, eco-conscious decisions about
+            their AI interactions.{" "}
+          </ParagraphLarge>
+          <Divider />
+        </div>{" "}
+        <div
+          ref={aboutUsRef}
+          className="flex w-full flex-col justify-center items-center text-center mb-20"
+        >
+          <CTAButton>ABSOLUTELY NO NEED TO FRET</CTAButton>
+          <SubTitle className="m-10">YOUR DATA'S SAFE WITH US</SubTitle>
+          <div className="flex w-full justify-center items-center mt-6">
+            <div className="flex-1 flex justify-end">
+              <FeatureIcon title="END-TO-END ENCRYPTION" />
+            </div>
+            <div className="flex-1 flex justify-center">
+              <FeatureIcon title="NO DATA RETENTION" />
+            </div>
+            <div className="flex-1 flex justify-start">
+              <FeatureIcon title="INSTANT DELETION" />
             </div>
           </div>
         </div>
