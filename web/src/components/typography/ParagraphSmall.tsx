@@ -8,7 +8,10 @@ interface TitleProps {
 
 const ParagraphSmall: React.FC<TitleProps> = ({ children, className }) => {
   return (
-    <h1 className={cn("text-paragraphsmall font-thin", className)}>
+    <h1
+      style={{ color: "#022B49" }}
+      className={cn("text-paragraphsmall font-thin", className)}
+    >
       {children}
     </h1>
   );

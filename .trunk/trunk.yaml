@@ -19,8 +19,8 @@ lint:
   enabled:
     - git-diff-check
     - markdownlint@0.44.0
-    - prettier@3.5.1
-    - trufflehog@3.88.12
+    - prettier@3.5.3
+    - trufflehog@3.88.14
 actions:
   disabled:
     - trunk-announce

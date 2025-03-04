@@ -1,18 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
-  content: ['./index.html', './src/**/*.{ts,tsx,js,jsx}'],
+  content: [
+    './index.html',
+    './src/**/*.{ts,tsx,js,jsx}',
+    './components/**/*.{ts,tsx,js,jsx}',
+  ],
   theme: {
     extend: {
       fontSize: {
-        title: ['120px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        title: ['75px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
         subtitle: ['90px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
         tertiaryheading: [
           '70px',
           { lineHeight: '1.1', letterSpacing: '-0.04em' },
         ],
         heading: ['50px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
-        subheading: ['45px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        subheading: ['40px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
         paragraphlarge: [
           '40px',
           { lineHeight: '1.1', letterSpacing: '-0.04em' },
@@ -23,12 +27,17 @@ module.exports = {
           { lineHeight: '1.1', letterSpacing: '-0.04em' },
         ],
         paragraphsmall: [
+          '25px',
+          { lineHeight: '1.1', letterSpacing: '-0.04em' },
+        ],
+        paragraphtiny: [
           '20px',
           { lineHeight: '1.1', letterSpacing: '-0.04em' },
         ],
       },
       fontFamily: {
         sans: ['Rubik', 'sans-serif'],
+        mono: ['Space Mono', 'monospace'],
         regular: '400',
       },
       fontWeight: {
@@ -55,9 +64,10 @@ module.exports = {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
+        primary2: '#022B49',
         secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+          DEFAULT: '#1976B9',
+          alt: '#0E7490',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -81,6 +91,14 @@ module.exports = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
+      },
+      backgroundImage: {
+        'gradients-secondary-1': 'linear-gradient(to right, #0E7490, #073846)',
+        'gradients-secondary-2': 'linear-gradient(to right, #1976B9, #023559)',
+        'gradients-wrapped-1': 'linear-gradient(to right, #022B49, #011524)',
+        'gradients-wrapped-2': 'linear-gradient(to right, #0E7490, #095469)',
+        'gradients-wrapped-3': 'linear-gradient(to right, #1976B9, #105D94)',
+        'gradients-wrapped-4': 'linear-gradient(to right, #022B49, #264459)',
       },
     },
   },
