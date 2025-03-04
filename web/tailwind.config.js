@@ -16,7 +16,7 @@ module.exports = {
           { lineHeight: '1.1', letterSpacing: '-0.04em' },
         ],
         heading: ['50px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
-        subheading: ['45px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        subheading: ['40px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
         paragraphlarge: [
           '40px',
           { lineHeight: '1.1', letterSpacing: '-0.04em' },

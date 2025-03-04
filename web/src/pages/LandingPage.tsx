@@ -77,26 +77,31 @@ const LandingPage: React.FC = () => {
         ref={learnMoreRef}
         className="flex flex-col justify-center items-center text-center"
       >
-        <SubTitle className="w-2/3 mb-10">
-          MEASURE YOUR USE OF CHAT GPT IN ELEMENTS
-        </SubTitle>
-        <SubHeading className="m-5">VIEW WHAT THE EYE CANT SEE</SubHeading>
-        <div className="flex gap-6 m-20">
+        <Title className=" mb-5">YOUR USE OF CHAT IN RESOURCES</Title>
+        <SubHeading>
+          We Calculate Your Chat GPT Usage 3 Resource Variables
+        </SubHeading>
+        <div className="flex gap-6 m-20 mb-40">
           <Card
+            gradient="bg-gradients-wrapped-3"
             title="GPT IN ELECTRICITY"
-            content="This is the electricity usage of GPT."
+            content="ChatGPT relies on high-energy servers, demanding electricity for processing and storage."
+            number={1}
           />
           <Card
+            gradient="bg-gradients-wrapped-1"
             title="GPT IN CO2 EMISSIONS"
-            content="GPT contributes this much to CO2 emissions."
+            content="ChatGPT relies on high-energy servers, demanding electricity for processing and storage."
+            number={2}
           />
           <Card
+            gradient="bg-gradients-wrapped-2"
             title="GPT IN FRESH WATER"
-            content="Usage of fresh water by GPT is tracked here."
+            content="ChatGPT relies on high-energy servers, demanding electricity for processing and storage."
+            number={3}
           />
         </div>
-        <Divider />
-        <div className="flex w-full flex-col justify-center items-center text-center">
+        <div className="flex mt-10 w-full flex-col justify-center items-center text-center">
           <SubTitle>WHY YOUR IMPACT MATTERS</SubTitle>
           <div className="flex gap-6 mt-20">
             <ImageCard
