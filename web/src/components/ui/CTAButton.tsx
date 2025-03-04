@@ -18,11 +18,11 @@ const CTAButton: React.FC<CTAButtonProps> = ({
     <Button
       onClick={onClick}
       disabled={disabled}
-      className={`w-[364px] h-[73px] ${
+      className={`pl-20 pr-20 pt-10 pb-10 flex text-center justify-center ${
         disabled
           ? "bg-gray-500 cursor-not-allowed"
-          : "bg-[#272626] hover:bg-[#3a3939]"
-      } text-white border border-[#272626] rounded-full text-lg font-medium flex items-center justify-center gap-2 transition ${className}`}
+          : "bg-[#022B49] hover:bg-[#3a3939]"
+      } text-white border border-[#272626] rounded-full text-xl font-medium flex transition ${className}`}
     >
       {children}
     </Button>

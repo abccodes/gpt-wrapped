@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import ParagraphTiny from "./typography/ParagraphTiny";
 
 interface NavBarProps {
   scrollToLearnMore: () => void;
@@ -11,22 +12,27 @@ const NavBar: React.FC<NavBarProps> = ({
   scrollToAboutUs,
 }) => {
   return (
-    <nav className="fixed top-8 left-1/2 transform -translate-x-1/2 flex gap-4">
-      <Button
-        variant="outline"
-        className="border-black rounded-[36.5px] px-6 py-2 text-lg font-medium hover:bg-gray-100"
-        onClick={scrollToLearnMore}
-      >
-        Learn More
-      </Button>
-      <Button
-        variant="outline"
-        className="border-black rounded-[36.5px] px-6 py-2 text-lg font-medium hover:bg-gray-100"
-        onClick={scrollToAboutUs}
-      >
-        About Us
-      </Button>
-    </nav>
+    <div className="w-full flex justify-end items-center space-x-4 pr-10">
+      {" "}
+      <div>
+        <Button
+          variant="outline"
+          className="border-[#022B49] text-[#022B49] rounded-[36.5px] px-20 py-6   hover:bg-gray-100"
+          onClick={scrollToLearnMore}
+        >
+          <ParagraphTiny>LEARN MORE</ParagraphTiny>
+        </Button>
+      </div>
+      <div>
+        <Button
+          variant="outline"
+          className="border-[#022B49] text--[#022B49] rounded-[36.5px] px-20 py-6  hover:bg-gray-100"
+          onClick={scrollToAboutUs}
+        >
+          <ParagraphTiny>HOW IT WORKS</ParagraphTiny>
+        </Button>
+      </div>
+    </div>
   );
 };
 

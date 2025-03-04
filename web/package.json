@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fontsource/rubik": "^5.1.1",
+    "@fontsource/space-mono": "^5.2.5",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-navigation-menu": "^1.2.5",
     "@radix-ui/react-progress": "^1.1.2",

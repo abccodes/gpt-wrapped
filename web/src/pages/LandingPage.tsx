@@ -14,6 +14,11 @@ import { ArrowUpRight } from "lucide-react";
 import FeatureIcon from "../components/FeatureIcon";
 import { Link } from "react-router-dom";
 import HomeButton from "../components/ui/HomeButton";
+import LeftToRightBanner from "../components/BannerLeftToRight";
+import RightToLeftBanner from "../components/BannerRightToLeft";
+import ParagraphSmall from "@/components/typography/ParagraphSmall";
+import Logo from "../assets/logo.svg";
+import ParagraphMedium from "@/components/typography/ParagraphMedium";
 
 const LandingPage: React.FC = () => {
   const learnMoreRef = useRef<HTMLDivElement>(null!);
@@ -25,28 +30,48 @@ const LandingPage: React.FC = () => {
 
   return (
     <>
-      <div className="flex w-screen justify-center p-5 mb-20">
+      <div className="flex w-screen justify-center p-5 m-10">
         <HomeButton />
         <NavBar
           scrollToLearnMore={() => handleScroll(learnMoreRef)}
           scrollToAboutUs={() => handleScroll(aboutUsRef)}
         />
       </div>
-      <div className="flex flex-col w-screen justify-center items-center text-center ">
-        <div className="w-2/3 m-10 mt-20">
-          <Title>YOUR AI HABITS HAVE A COST.</Title>
+      <div>
+        <LeftToRightBanner />
+      </div>
+      <div className="flex flex-row w-screen p-10">
+        <div className="flex flex-col justify-center items-center text-left w-3/5">
+          <div className="mt-20">
+            <ParagraphSmall className="mb-10 ">
+              HI, WE'RE CHATWRAPPED
+            </ParagraphSmall>
+            <Title className="mb-10">
+              WE WE READ YOUR CHAT DATA IN RESOURCES.
+            </Title>
+          </div>
+          <div>
+            <ParagraphMedium className="mb-20 w-3/4">
+              See your usage of CHAT GPT in both natural & secondary resources.
+              Learn more about the cost of AI.
+            </ParagraphMedium>
+            <Link to="/upload" className="mb-10">
+              <CTAButton>
+                <p className="font-bold">GET TO WRAPPING </p>
+                <ArrowUpRight />
+              </CTAButton>
+            </Link>
+          </div>
         </div>
-        <div className="w-3/4 m-5">
-          <Heading>SEE YOUR IMPACT WITH ARTIFICIAL INTELLIGENCE</Heading>
+        <div className="flex flex-col justify-center items-center text-center w-2/5 ">
+          <img src={Logo} alt="AI Impact" className="w-full h-[50vh] mb-20" />
+
+          <ParagraphSmall>YOUR IMPACT IN 3 LAYERS</ParagraphSmall>
         </div>
-        <div className="mt-20">
-          <Link to="/upload">
-            <CTAButton>
-              GET TO WRAPPING <ArrowUpRight className="w-5 h-5" />
-            </CTAButton>
-          </Link>
-        </div>
-        <Divider />
+      </div>
+      <div className="mt-20 mb-20">
+        {" "}
+        <RightToLeftBanner />
       </div>
       <div
         ref={learnMoreRef}

@@ -2,12 +2,18 @@
 @import "@fontsource/rubik/600.css";
 @import "@fontsource/rubik/300.css";
 
+@import "@fontsource/space-mono";
+@import "@fontsource/space-mono/400.css";
+@import "@fontsource/space-mono/700.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
   --font-sans: "Rubik", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
   line-height: 1.5;
   font-weight: 400;
 
@@ -19,6 +25,18 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --primary: #ffffff;
+  --primary2: #022b49;
+  --secondary: #1976b9;
+  --secondary-alt: #0e7490;
+
+  --secondary-gradient: linear-gradient(to right, #0e7490, #073846);
+  --secondary-gradient-alt: linear-gradient(to right, #1976b9, #023559);
+  --wrapped-gradient-1: linear-gradient(to right, #022b49, #011524);
+  --wrapped-gradient-2: linear-gradient(to right, #0e7490, #095469);
+  --wrapped-gradient-3: linear-gradient(to right, #1976b9, #105d94);
+  --wrapped-gradient-4: linear-gradient(to right, #022b49, #264459);
 }
 
 a {

@@ -6,15 +6,15 @@ interface TitleProps {
   className?: string;
 }
 
-const Title: React.FC<TitleProps> = ({ children, className }) => {
+const ParagraphTiny: React.FC<TitleProps> = ({ children, className }) => {
   return (
     <h1
       style={{ color: "#022B49" }}
-      className={cn("text-title font-semibold", className)}
+      className={cn("text-paragraphtiny font-thin", className)}
     >
       {children}
     </h1>
   );
 };
 
-export default Title;
+export default ParagraphTiny;
