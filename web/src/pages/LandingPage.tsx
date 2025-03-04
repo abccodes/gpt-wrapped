@@ -19,6 +19,10 @@ import RightToLeftBanner from "../components/BannerRightToLeft";
 import ParagraphSmall from "@/components/typography/ParagraphSmall";
 import Logo from "../assets/logo.svg";
 import ParagraphMedium from "@/components/typography/ParagraphMedium";
+import BackgroundWave from "../assets/backgroundwave.svg";
+import DarkBlueCircle from "../assets/darkbluecircle.svg";
+import LightBlueCircle from "../assets/lightbluecircle.svg";
+import GreenCircle from "../assets/greencircle.svg";
 
 const LandingPage: React.FC = () => {
   const learnMoreRef = useRef<HTMLDivElement>(null!);
@@ -29,7 +33,7 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <>
+    <div className="w-screen overflow-hidden">
       <div className="flex w-screen justify-center p-5 m-10">
         <HomeButton />
         <NavBar
@@ -101,28 +105,56 @@ const LandingPage: React.FC = () => {
             number={3}
           />
         </div>
-        <div className="flex mt-10 w-full flex-col justify-center items-center text-center">
-          <SubTitle>WHY YOUR IMPACT MATTERS</SubTitle>
-          <div className="flex gap-6 mt-20">
-            <ImageCard
-              imgSrc="/images/electricity.jpg"
-              title="HOW CHAT USES ELECTRICITY"
-              content="ChatGPT relies on high-energy servers, demanding electricity for processing and storage."
-              style={{ transform: "rotateZ(-5deg)" }}
+        <div className="flex m-10 w-full flex-col justify-center items-center text-center">
+          <ParagraphMedium>
+            IT'S IMPORTANT TO KNOW YOUR PERSONAL IMPACT
+          </ParagraphMedium>
+          <Title className=" mr-40 ml-40 mt-10">
+            LET US EXPLAIN MORE ABOUT HOW CHAT USES RESOURCES
+          </Title>
+          <div className="relative w-full mt-20">
+            <img
+              src={BackgroundWave}
+              alt="Wave Divider"
+              className="block w-full"
             />
-            <ImageCard
-              imgSrc="/images/co2.jpg"
-              title="HOW CHAT USES CO2 EMISSIONS"
-              content="Cooling AI Data centers powering ChatGPT generate carbon emissions from electricity and cooling systems."
-            />
-            <ImageCard
-              imgSrc="/images/water.jpg"
-              title="HOW CHAT CONSUMES FRESHWATER"
-              content="Cooling AI servers consumes fresh water to prevent overheating and maintain efficiency."
-              style={{ transform: "rotateZ(5deg)" }}
-            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-full flex flex-row ">
+                <div className="flex flex-col items-center text-center p-5 w-1/3">
+                  <img src={LightBlueCircle} alt="Wave Divider" className="" />
+                  <p className="text-paragraphmedium font-semibold text-white">
+                    CO2 EMISSIONS
+                  </p>
+                  <p className="text-paragraphtiny font-thin text-white w-2/3 mt-10">
+                    Due to the large amounts of computing power that LLMs
+                    require, electricity often comes from power plants that burn
+                    fossil fuels, which releases C02 emissions.{" "}
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-center p-5 w-1/3">
+                  {" "}
+                  <p className="text-paragraphmedium font-semibold text-white">
+                    ELECTRICITY
+                  </p>
+                  <p className="text-paragraphtiny font-thin text-white w-2/3 mt-10">
+                    ChatGPT relies on high-energy servers, demanding electricity
+                    for processing and storage.
+                  </p>
+                </div>
+                <div className="flex flex-col items-center text-center p-5 w-1/3">
+                  {" "}
+                  <p className="text-paragraphmedium font-semibold text-white">
+                    FRESHWATER
+                  </p>
+                  <p className="text-paragraphtiny font-thin text-white w-2/3 mt-10">
+                    Significant water is required to cool and keep systems at
+                    optimal temperatures to maintain efficiency and prevent
+                    overheating.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-          <Divider />
         </div>
         <div className="flex w-full flex-col justify-center items-center text-center">
           <SubTitle className="w-2/3 mn-10">HOW WE MAKE IT HAPPEN</SubTitle>
@@ -155,7 +187,7 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
