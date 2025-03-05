@@ -13,18 +13,24 @@ const FeatureIcon: React.FC<FeatureIconProps> = ({
   className,
 }) => {
   return (
-    <div className={`flex flex-col items-center text-center ${className}`}>
-      <div className="w-[250px] h-[250px] bg-[#D9D9D9] rounded-full flex items-center justify-center overflow-hidden">
-        {imgSrc ? (
-          <img
-            src={imgSrc}
-            alt={title}
-            className="w-full h-full object-cover"
-          />
-        ) : null}
-      </div>
+    <div
+      className={`w-full flex flex-col items-center text-center ${className} `}
+    >
+      <div className="flex items-center justify-center flex-col w-1/3">
+        <div className="w-[200px] h-[200px] bg-[#D9D9D9] rounded-full flex items-center justify-center overflow-hidden">
+          {imgSrc ? (
+            <img
+              src={imgSrc}
+              alt={title}
+              className="w-full h-full object-cover"
+            />
+          ) : null}
+        </div>
 
-      <ParagraphMedium className="w-2/3 mt-5">{title}</ParagraphMedium>
+        <p className="text-paragraphmedium font-thin mt-5 text-white">
+          {title}
+        </p>
+      </div>
     </div>
   );
 };
