@@ -158,3 +158,12 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+
+.clip-flap {
+  clip-path: polygon(
+    0% 100%,
+    /* bottom-left corner */ 0% 0%,
+    /* top-left corner */ 80% 0%,
+    /* top edge slanted */ 100% 100% /* bottom-right corner */
+  );
+}

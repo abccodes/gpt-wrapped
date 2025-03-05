@@ -3,12 +3,8 @@ import NavBar from "../components/NavBar";
 import Title from "../components/typography/Title";
 import Heading from "../components/typography/Heading";
 import CTAButton from "../components/ui/CTAButton";
-import Divider from "../components/ui/Divider";
-import SubTitle from "../components/typography/SubTitle";
 import SubHeading from "../components/typography/SubHeading";
 import Card from "../components/ui/Card";
-import ImageCard from "../components/ImageCard";
-import TeritaryHeading from "../components/typography/TertiaryHeading";
 import ParagraphLarge from "../components/typography/ParagraphLarge";
 import { ArrowUpRight } from "lucide-react";
 import FeatureIcon from "../components/FeatureIcon";
@@ -23,6 +19,7 @@ import BackgroundWave from "../assets/backgroundwave.svg";
 import DarkBlueCircle from "../assets/darkbluecircle.svg";
 import LightBlueCircle from "../assets/lightbluecircle.svg";
 import GreenCircle from "../assets/greencircle.svg";
+import GPT from "../assets/gpt.svg";
 
 const LandingPage: React.FC = () => {
   const learnMoreRef = useRef<HTMLDivElement>(null!);
@@ -109,7 +106,7 @@ const LandingPage: React.FC = () => {
           <ParagraphMedium>
             IT'S IMPORTANT TO KNOW YOUR PERSONAL IMPACT
           </ParagraphMedium>
-          <Title className=" mr-40 ml-40 mt-10">
+          <Title className=" mr-40 ml-40 mt-10 mb-20">
             LET US EXPLAIN MORE ABOUT HOW CHAT USES RESOURCES
           </Title>
           <div className="relative w-full mt-20">
@@ -120,20 +117,22 @@ const LandingPage: React.FC = () => {
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-full flex flex-row ">
-                <div className="flex flex-col items-center text-center p-5 w-1/3">
-                  <img src={LightBlueCircle} alt="Wave Divider" className="" />
-                  <p className="text-paragraphmedium font-semibold text-white">
+                <div className="mb-40 flex flex-col items-center text-center p-5 w-1/3">
+                  {/* Negative top margin to shift the circle up by half its height */}
+                  <img src={LightBlueCircle} alt="Circle Icon" className="" />
+                  <p className="mt-10 text-paragraphmedium font-semibold text-white">
                     CO2 EMISSIONS
                   </p>
                   <p className="text-paragraphtiny font-thin text-white w-2/3 mt-10">
                     Due to the large amounts of computing power that LLMs
                     require, electricity often comes from power plants that burn
-                    fossil fuels, which releases C02 emissions.{" "}
+                    fossil fuels, which releases CO2 emissions.
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center p-5 w-1/3">
-                  {" "}
-                  <p className="text-paragraphmedium font-semibold text-white">
+                  <img src={DarkBlueCircle} alt="Circle Icon" className="" />
+
+                  <p className="mt-10 text-paragraphmedium font-semibold text-white">
                     ELECTRICITY
                   </p>
                   <p className="text-paragraphtiny font-thin text-white w-2/3 mt-10">
@@ -142,8 +141,9 @@ const LandingPage: React.FC = () => {
                   </p>
                 </div>
                 <div className="flex flex-col items-center text-center p-5 w-1/3">
-                  {" "}
-                  <p className="text-paragraphmedium font-semibold text-white">
+                  <img src={GreenCircle} alt="Circle Icon" className="" />
+
+                  <p className="mt-10 text-paragraphmedium font-semibold text-white">
                     FRESHWATER
                   </p>
                   <p className="text-paragraphtiny font-thin text-white w-2/3 mt-10">
@@ -157,31 +157,79 @@ const LandingPage: React.FC = () => {
           </div>
         </div>
         <div className="flex w-full flex-col justify-center items-center text-center">
-          <SubTitle className="w-2/3 mn-10">HOW WE MAKE IT HAPPEN</SubTitle>
-          <TeritaryHeading className="m-5">IT'S 3 EASY STEPS</TeritaryHeading>
-          <ParagraphLarge className="w-4/6 mt-10">
-            Unwrap the environmental impact of your AI usage with ChatGPT Impact
-            Tracker. Analyze your conversations and discover the top 3 responses
-            with the highest carbon, water, electricity, and gas costs. This
-            tool empowers users to make informed, eco-conscious decisions about
-            their AI interactions.{" "}
+          <Title className="w-2/3 mt-20">WHAT WE DO FOR YOU</Title>
+          <ParagraphLarge className="w-2/3 mt-10">
+            We unwrap the environmental impact of your AI usage with  ChatGPT
+            Impact Tracker. Analyze your conversations and discover the top 3
+            responses with the highest carbon, water, electricity.
           </ParagraphLarge>
-          <Divider />
+          <div className="flex flex-row w-full mt-10 pb-40">
+            <div className="flex flex-col w-1/2 ml-20">
+              <img src={GPT} alt="GPT" className="w-full h-[70vh] mt-20" />
+            </div>{" "}
+            <div className="flex flex-col items-center justify-center w-1/2 mr-20">
+              <ParagraphLarge className="mb-10">LUCKY YOU!</ParagraphLarge>
+              <Heading className="mb-10">IT'S 4 SUPER EASY STEPS</Heading>
+              <div className="flex flex-col text-left">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="flex items-center justify-center w-[61px] h-[61px] bg-[#022B49] font-mono text-white text-paragraphmedium rounded-full">
+                    1
+                  </div>
+                  <ParagraphMedium>
+                    Log into your CHATGPT account
+                  </ParagraphMedium>{" "}
+                </div>
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="flex items-center justify-center w-[61px] h-[61px] bg-[#022B49] font-mono text-white text-paragraphmedium rounded-full">
+                    2
+                  </div>
+                  <ParagraphMedium>
+                    Go to settings & download your data
+                  </ParagraphMedium>{" "}
+                </div>
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="flex items-center justify-center w-[61px] h-[61px] bg-[#022B49] font-mono text-white text-paragraphmedium rounded-full">
+                    3
+                  </div>
+                  <ParagraphMedium>
+                    Check your email for export link
+                  </ParagraphMedium>{" "}
+                </div>{" "}
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="flex items-center justify-center w-[61px] h-[61px] bg-[#022B49] font-mono text-white text-paragraphmedium rounded-full">
+                    4
+                  </div>
+                  <ParagraphMedium>
+                    Drop data on our directions page
+                  </ParagraphMedium>{" "}
+                </div>
+              </div>
+              <div>
+                <Link to="/upload">
+                  <CTAButton className="mt-10">
+                    <p className="font-bold">GET TO WRAPPING</p>
+                    <ArrowUpRight />
+                  </CTAButton>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>{" "}
         <div
           ref={aboutUsRef}
-          className="flex w-full flex-col justify-center items-center text-center mb-20"
+          className="flex w-full flex-col justify-center items-center text-center pt-20 pb-20 bg-gradients-wrapped-1"
         >
-          <CTAButton>ABSOLUTELY NO NEED TO FRET</CTAButton>
-          <SubTitle className="m-10">YOUR DATA'S SAFE WITH US</SubTitle>
-          <div className="flex w-full justify-center items-center mt-6">
-            <div className="flex-1 flex justify-end">
-              <FeatureIcon title="END-TO-END ENCRYPTION" />
+          <p className="text-title font-semibold m-10 text-white">
+            YOUR DATA'S SAFE WITH US
+          </p>
+          <div className="flex w-full justify-center items-center mt-6 gap-x-10">
+            <div className="flex justify-end w-1/4">
+              <FeatureIcon title="END TO END ENCRYPTION" />
             </div>
-            <div className="flex-1 flex justify-center">
+            <div className="flex justify-center w-1/4">
               <FeatureIcon title="NO DATA RETENTION" />
             </div>
-            <div className="flex-1 flex justify-start">
+            <div className="flex justify-start w-1/4">
               <FeatureIcon title="INSTANT DELETION" />
             </div>
           </div>
