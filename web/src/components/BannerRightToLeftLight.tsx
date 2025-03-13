@@ -34,10 +34,13 @@ const RightToLeftBannerLight: React.FC = () => {
       </style>
 
       {/* Left to Right */}
-      <div className="w-full border-2 border-black  py-3 overflow-hidden mt-1">
+      <div className="w-full border-2 border-primary2  py-3 overflow-hidden mt-1">
         <div className="marquee-container animate-marquee-reverse p-5">
           {[...Array(3)].map((_, i) => (
-            <span key={i} className="text-black font-mono text-lg min-w-screen">
+            <span
+              key={i}
+              className="text-primary2 font-mono text-lg min-w-screen"
+            >
               <p className="text-paragraphsmall font-thin">{textContent}</p>
             </span>
           ))}

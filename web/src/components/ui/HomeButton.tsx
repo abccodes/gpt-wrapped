@@ -33,7 +33,7 @@ const HomeButton: React.FC = () => {
 
   return (
     <>
-      <nav className="fixed top-10 left-20">
+      <nav className="fixed top-10 left-20 z-[100]">
         <button
           onClick={handleClick}
           className="w-16 h-16 bg-gray-800 text-white rounded-full flex items-center justify-center shadow-lg"
@@ -55,7 +55,10 @@ const HomeButton: React.FC = () => {
               <AlertDialogCancel onClick={() => setOpen(false)}>
                 Cancel
               </AlertDialogCancel>
-              <AlertDialogAction onClick={handleConfirm}>
+              <AlertDialogAction
+                className="text-black "
+                onClick={handleConfirm}
+              >
                 Proceed
               </AlertDialogAction>
             </AlertDialogFooter>

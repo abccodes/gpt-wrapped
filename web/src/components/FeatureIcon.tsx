@@ -1,5 +1,4 @@
 import React from "react";
-import ParagraphMedium from "./typography/ParagraphMedium";
 
 interface FeatureIconProps {
   imgSrc?: string;
@@ -17,13 +16,9 @@ const FeatureIcon: React.FC<FeatureIconProps> = ({
       className={`w-full flex flex-col items-center text-center ${className} `}
     >
       <div className="flex items-center justify-center flex-col w-1/3">
-        <div className="w-[200px] h-[200px] bg-[#D9D9D9] rounded-full flex items-center justify-center overflow-hidden">
+        <div className="w-[200px] h-[200px] flex items-center justify-center overflow-hidden">
           {imgSrc ? (
-            <img
-              src={imgSrc}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
+            <img src={imgSrc} alt={title} className="w-full  object-cover" />
           ) : null}
         </div>
 

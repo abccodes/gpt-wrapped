@@ -16,7 +16,7 @@ module.exports = {
           { lineHeight: '1.1', letterSpacing: '-0.04em' },
         ],
         heading: ['50px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
-        subheading: ['40px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
+        subheading: ['38px', { lineHeight: '1.1', letterSpacing: '-0.04em' }],
         paragraphlarge: [
           '40px',
           { lineHeight: '1.1', letterSpacing: '-0.04em' },
@@ -37,7 +37,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Rubik', 'sans-serif'],
-        mono: ['Space Mono', 'monospace'],
+        mono: ['Space Grotesk', 'sans-serif'],
         regular: '400',
       },
       fontWeight: {
@@ -99,6 +99,8 @@ module.exports = {
         'gradients-wrapped-2': 'linear-gradient(to right, #0E7490, #095469)',
         'gradients-wrapped-3': 'linear-gradient(to right, #1976B9, #105D94)',
         'gradients-wrapped-4': 'linear-gradient(to right, #022B49, #264459)',
+        'gradients-wrapped-5':
+          'linear-gradient(to right, rgba(2, 43, 73, 0.6), rgba(1, 21, 36, 0.6))',
       },
     },
   },

@@ -5,6 +5,9 @@ import {
   calculateOverallTotals,
   calculateUsageByMonth,
   calculateTopMonthsImpact,
+  findHighestConsumptionDay,
+  findHighestConsumptionMonth,
+  findHighestConsumptionYear,
 } from "../services/metricsService";
 import { logResults } from "../utils/logger";
 
@@ -17,12 +20,13 @@ export const uploadZipFile = async (
       res.status(400).json({ message: "No file uploaded" });
       return;
     }
+
+    // Extract JSON Data from Zip
     const jsonData = await extractJsonFromZip(req.file.buffer);
-
     const conversations = processConversations(jsonData);
-
     const allMessages = conversations.flatMap((convo) => convo.messages);
 
+    // Compute Metrics
     const usageByMonth = calculateUsageByMonth(allMessages);
     const queriesByModel: Record<string, number> = {};
 
@@ -40,6 +44,18 @@ export const uploadZipFile = async (
       queriesByModel
     );
 
+    // Find Peak Consumption (Day, Month, Year)
+    const highestDay = findHighestConsumptionDay(allMessages, queriesByModel);
+    const highestMonth = findHighestConsumptionMonth(
+      usageByMonth,
+      queriesByModel
+    );
+    const highestYear = findHighestConsumptionYear(
+      usageByMonth,
+      queriesByModel
+    );
+
+    // Log results
     logResults(
       conversations,
       queriesByModel,
@@ -48,12 +64,16 @@ export const uploadZipFile = async (
       topMonthsImpact
     );
 
+    // Return JSON Response
     res.json({
       message: "Processing complete",
       conversations,
       overallMetrics,
       usageByMonth,
       topMonthsImpact,
+      highestDay,
+      highestMonth,
+      highestYear,
     });
   } catch (error) {
     const errorMessage = (error as Error).message;

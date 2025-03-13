@@ -15,22 +15,22 @@ const NavBar: React.FC<NavBarProps> = ({
     <div className="w-full flex justify-end items-center space-x-4 pr-10">
       {" "}
       <div>
-        <Button
-          variant="outline"
-          className="border-[#022B49] text-[#022B49] rounded-[36.5px] px-20 py-6   hover:bg-gray-100"
+        {" "}
+        <button
           onClick={scrollToLearnMore}
+          className={`pl-20 pr-20 pt-5 pb-5 flex text-center justify-center ${"bg-gradients-wrapped-1 hover:bg-[#3a3939]"} text-white border border-[#272626] rounded-full font-medium flex transition`}
         >
-          <ParagraphTiny>LEARN MORE</ParagraphTiny>
-        </Button>
+          <p className="text-paragraphtiny font-bold">LEARN MORE</p>
+        </button>
       </div>
       <div>
-        <Button
-          variant="outline"
-          className="border-[#022B49] text--[#022B49] rounded-[36.5px] px-20 py-6  hover:bg-gray-100"
+        {" "}
+        <button
           onClick={scrollToAboutUs}
+          className={`pl-20 pr-20 pt-5 pb-5 flex text-center justify-center ${"bg-gradients-wrapped-1 hover:bg-[#3a3939]"} text-white border border-[#272626] rounded-full font-medium flex transition`}
         >
-          <ParagraphTiny>HOW IT WORKS</ParagraphTiny>
-        </Button>
+          <p className="text-paragraphtiny font-bold">ABOUT US</p>
+        </button>
       </div>
     </div>
   );

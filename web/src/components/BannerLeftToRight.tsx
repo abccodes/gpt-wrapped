@@ -1,5 +1,4 @@
 import React from "react";
-import ParagraphSmall from "./typography/ParagraphSmall";
 
 const LeftToRightBanner: React.FC = () => {
   const textContent =
