@@ -1,4 +1,4 @@
-# Chat Wrapped
+## Chat Wrapped
 
 **Chat Wrapped** is a joint project between **UCLA Design Media Arts** and **San Francisco State University Computer Science**.  
 Inspired by *Spotify Wrapped*, this collaboration blends design and engineering to reveal the real **environmental impact** of your ChatGPT usage.
@@ -18,7 +18,7 @@ We analyze your exported ChatGPT messages and estimate environmental metrics bas
   <img src="./LANDING.svg" width="900"/>
 </p>
 
-# User Flow
+## User Flow
 
 <p align="center">
   <img src="./USER FLOW.svg" width="900"/>
@@ -29,12 +29,18 @@ We analyze your exported ChatGPT messages and estimate environmental metrics bas
 ## How It Works
 
 <p align="center">
-  <img src="./WRAP_STEPS.jpg" width="900"/>
+  <img src="./WRAP STEPS.jpg" width="900"/>
 </p>
 
 ---
 
 ## Individual Pages
+
+### Load Page
+<p align="center">
+  <img src="./LOAD PAGE.jpg" width="900"/>
+</p>
+
 
 ### Electric
 <p align="center">
@@ -49,9 +55,4 @@ We analyze your exported ChatGPT messages and estimate environmental metrics bas
 ### CO2
 <p align="center">
   <img src="./CO2.jpg" width="900"/>
-</p>
-
-### Load Page
-<p align="center">
-  <img src="./LOAD PAGE.jpg" width="900"/>
 </p>
