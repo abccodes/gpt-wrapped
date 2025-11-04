@@ -14,22 +14,6 @@ Upload or connect your chat history, generate insights (top topics, streaks, lat
 - **Privacy-first**: All processing can run locally; no third-party analytics by default.
 - **TypeScript everywhere**: End-to-end types for safer iteration.
 
----
-
-## 🧱 Monorepo Layout
-
-gpt-wrapped/
-├─ web/ # Next.js app (UI, pages/routes, charts, share cards)
-├─ server/ # API (parsing, analytics, image/card rendering)
-├─ .trunk/ # CI/linting/formatting configuration
-├─ package.json # Root scripts (pnpm workspaces)
-└─ pnpm-lock.yaml
-
-yaml
-Copy code
-
----
-
 ## 🚀 Quick Start
 
 ### Prereqs
