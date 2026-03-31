@@ -1,3 +1,5 @@
+## IMPORTANT NOTICE: This project was for o1 and earlier versions of ChatGPT and is no longer in operation. Due to the increasing complexity and abstractions of calculating environmental impacts, it is no longer reasonable to estimate outputs.
+
 ## Chat Wrapped
 
 **Chat Wrapped** is a joint project between **UCLA Design Media Arts** and **San Francisco State University Computer Science**.  
